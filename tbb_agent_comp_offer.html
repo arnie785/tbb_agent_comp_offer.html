@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TBB — Your Compensation Offer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#0b0c10;--surface:#13151b;--surface2:#1a1d25;--line:#252830;
+  --gold:#c9a227;--gold-soft:#e2bc4e;--gold-dim:rgba(201,162,39,.12);
+  --txt:#f0ede6;--txt2:#9097a8;--txt3:#5a6070;
+  --green:#22c78a;--green-bg:#0b2219;
+  --blue:#4d9de0;--blue-bg:#0c1e33;
+  --amber:#e5993c;--amber-bg:#2e1e08;
+  --purple:#9b80f5;--purple-bg:#1e1638;
+  --red:#e55a5f;--red-bg:#2a1012;
+  --gray:#717685;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);
+  line-height:1.55;-webkit-font-smoothing:antialiased;}
+.page{max-width:900px;margin:0 auto;padding:40px 28px 60px;}
+
+/* ── header ── */
+.hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;gap:20px;}
+.hdr-left{}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.logo-mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--gold) 0%,#8a6b12 100%);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:#0b0c10;letter-spacing:-.02em;}
+.logo-name{font-size:18px;font-weight:600;letter-spacing:-.01em;}
+.hdr h1{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.15;max-width:480px;}
+.hdr h1 span{color:var(--gold-soft);}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;
+  border-radius:6px;border:1px solid;}
+.badge.green{background:var(--green-bg);color:var(--green);border-color:rgba(34,199,138,.25);}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border-color:rgba(77,157,224,.25);}
+.badge.gold{background:var(--gold-dim);color:var(--gold-soft);border-color:rgba(201,162,39,.3);}
+
+/* ── journey timeline ── */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:32px;position:relative;}
+.journey::before{content:'';position:absolute;top:28px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);
+  height:2px;background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-dim));z-index:0;}
+.step{text-align:center;position:relative;z-index:1;padding:0 4px;}
+.step-circle{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border:2px solid;}
+.step-circle.done{background:var(--surface2);border-color:var(--txt3);color:var(--txt3);}
+.step-circle.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-soft);}
+.step-circle.locked{background:var(--surface);border-color:var(--line);color:var(--txt3);}
+.step-num{font-size:20px;font-weight:700;}
+.step-name{font-size:12px;font-weight:600;color:var(--txt);margin-bottom:3px;}
+.step-note{font-size:11px;color:var(--txt3);line-height:1.4;}
+.you-are{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;margin-top:5px;}
+
+/* ── section label ── */
+.sec-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--txt3);
+  margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--line);}
+
+/* ── overview cards ── */
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.ov{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;}
+.ov-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:12px;}
+.ov-icon.gold{background:var(--gold-dim);color:var(--gold-soft);}
+.ov-icon.green{background:var(--green-bg);color:var(--green);}
+.ov-icon.purple{background:var(--purple-bg);color:var(--purple);}
+.ov-val{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-bottom:2px;line-height:1;}
+.ov-label{font-size:12px;color:var(--txt2);}
+.ov-sub{font-size:11px;color:var(--txt3);margin-top:5px;}
+
+/* ── how you get paid ── */
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;}
+.phase-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.phase-dot{width:10px;height:10px;border-radius:50%;}
+.phase-title{font-size:15px;font-weight:600;}
+.phase-subtitle{font-size:11px;color:var(--txt3);margin-top:1px;}
+.phase-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;
+  border-bottom:1px solid var(--line);font-size:13px;}
+.phase-row:last-child{border-bottom:none;}
+.phase-row .label{color:var(--txt2);}
+.phase-row .val{font-weight:600;color:var(--txt);}
+.phase-row .val.green{color:var(--green);}
+.phase-row .val.gold{color:var(--gold-soft);}
+.phase-row .val.blue{color:var(--blue);}
+.phase-row .val.purple{color:var(--purple);}
+
+/* ── comp grid ── */
+.grid-wrap{overflow-x:auto;margin-bottom:28px;}
+table.comp{width:100%;border-collapse:collapse;font-size:13px;}
+table.comp th{background:var(--surface2);padding:10px 12px;text-align:left;font-size:11px;
+  font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--line);}
+table.comp th:not(:first-child){text-align:right;}
+table.comp td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--txt2);}
+table.comp td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;}
+table.comp td.mo{color:var(--txt);font-weight:600;}
+table.comp td.agent-pay{color:var(--green);font-weight:700;}
+table.comp td.bal-clear{color:var(--gold-soft);font-weight:700;}
+table.comp tr.section-hdr td{background:var(--surface2);font-size:11px;font-weight:600;
+  color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;}
+table.comp tr:last-child td{border-bottom:none;}
+table.comp td.muted{color:var(--txt3);}
+
+/* ── setter earn ── */
+.setter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.setter-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;}
+.setter-card .s-type{font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;
+  letter-spacing:.05em;margin-bottom:6px;}
+.setter-card .s-val{font-size:20px;font-weight:700;color:var(--gold-soft);letter-spacing:-.02em;}
+.setter-card .s-note{font-size:11px;color:var(--txt3);margin-top:4px;}
+
+/* ── points ladder ── */
+.pts-wrap{margin-bottom:28px;}
+.pts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.pt{border-radius:12px;padding:14px 12px;border:1.5px solid transparent;}
+.pt.gray-t{background:var(--surface);border-color:var(--line);}
+.pt.green-t{background:var(--green-bg);border-color:rgba(34,199,138,.3);}
+.pt.blue-t{background:var(--blue-bg);border-color:rgba(77,157,224,.3);}
+.pt.amber-t{background:var(--amber-bg);border-color:rgba(229,153,60,.3);}
+.pt.purple-t{background:var(--purple-bg);border-color:rgba(155,128,245,.3);}
+.pt-pts{font-size:22px;font-weight:700;letter-spacing:-.03em;margin-bottom:2px;}
+.pt-name{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;}
+.pt-result{font-size:13px;font-weight:600;}
+.pt-sub{font-size:11px;margin-top:3px;}
+
+/* ── blended rate ── */
+.rate-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
+.rate-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 10px;text-align:center;}
+.rate-mo{font-size:11px;font-weight:600;color:var(--txt3);margin-bottom:4px;}
+.rate-pct{font-size:20px;font-weight:700;letter-spacing:-.02em;}
+.rate-anc{font-size:11px;color:var(--txt2);margin-top:3px;}
+.rate-card.highlight{border-color:var(--gold);background:var(--gold-dim);}
+.rate-card.highlight .rate-pct{color:var(--gold-soft);}
+
+/* ── big boss ── */
+.bb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;}
+.bb-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;}
+.bb-card.on{background:var(--purple-bg);border-color:rgba(155,128,245,.4);}
+.bb-pts{font-size:18px;font-weight:700;color:var(--txt3);}
+.bb-card.on .bb-pts{color:var(--purple);}
+.bb-mult{font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--txt);margin:4px 0;}
+.bb-card.on .bb-mult{color:var(--purple);}
+.bb-note{font-size:11px;color:var(--txt3);}
+
+/* ── vs table ── */
+.vs-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:28px;}
+.vs-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--txt3);
+  text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--line);background:var(--surface2);}
+.vs-table th:not(:first-child){text-align:center;}
+.vs-table td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--txt2);}
+.vs-table td:not(:first-child){text-align:center;}
+.vs-table td.win{color:var(--green);font-weight:600;}
+.vs-table td.lose{color:var(--txt3);}
+.vs-table tr:last-child td{border-bottom:none;}
+.vs-table th.tbb-col{color:var(--gold-soft);}
+
+/* ── callout ── */
+.callout{background:var(--gold-dim);border:1px solid rgba(201,162,39,.3);border-radius:14px;
+  padding:18px 20px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start;}
+.callout i{font-size:22px;color:var(--gold-soft);flex-shrink:0;margin-top:1px;}
+.callout-text{font-size:14px;line-height:1.6;color:var(--txt);}
+.callout-text b{color:var(--gold-soft);}
+
+/* ── footer ── */
+.foot{text-align:center;font-size:11px;color:var(--txt3);margin-top:40px;padding-top:24px;border-top:1px solid var(--line);}
+
+@media(max-width:680px){
+  .overview,.phase-grid{grid-template-columns:1fr;}
+  .pts-grid{grid-template-columns:1fr 1fr;}
+  .rate-grid{grid-template-columns:1fr 1fr;}
+  .bb-grid{grid-template-columns:1fr 1fr;}
+  .setter-grid{grid-template-columns:1fr;}
+  .journey{grid-template-columns:1fr 1fr;gap:12px;}
+  .journey::before{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="logo">
+        <div class="logo-mark">B</div>
+        <div class="logo-name">The Benefits Boss</div>
+      </div>
+      <h1>Your compensation offer — <span>here's exactly what you earn.</span></h1>
+      <div class="badge-row">
+        <span class="badge green"><i class="ti ti-check" style="font-size:10px"></i> 1099 independent</span>
+        <span class="badge blue"><i class="ti ti-shield" style="font-size:10px"></i> Guaranteed draw floor</span>
+        <span class="badge gold"><i class="ti ti-bolt" style="font-size:10px"></i> Points-driven, no mystery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNEY -->
+  <div class="sec-label">Your path</div>
+  <div class="journey" style="margin-bottom:36px;">
+    <div class="step">
+      <div class="step-circle done"><span class="step-num">1</span></div>
+      <div class="step-name">Boss Prep</div>
+      <div class="step-note">Set deals, earn fees, get licensed in 10 states</div>
+    </div>
+    <div class="step">
+      <div class="step-circle done"><span class="step-num">2</span></div>
+      <div class="step-name">Boss Academy</div>
+      <div class="step-note">2 weeks, closer school. Pass the live audition.</div>
+      <div class="step-note" style="color:var(--amber);font-weight:600;margin-top:4px;">Draw activates on graduation</div>
+    </div>
+    <div class="step">
+      <div class="step-circle active"><span class="step-num">3</span></div>
+      <div class="step-name">Lil Boss</div>
+      <div class="step-note">Guaranteed draw while you ramp. Points unlock your floor.</div>
+      <div class="you-are">← You'll land here</div>
+    </div>
+    <div class="step">
+      <div class="step-circle locked"><span class="step-num">4</span></div>
+      <div class="step-name">Big Boss</div>
+      <div class="step-note">No floor needed — you're clearing $6k+ in commission.</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW NUMBERS -->
+  <div class="sec-label">The offer at a glance</div>
+  <div class="overview">
+    <div class="ov">
+      <div class="ov-icon gold"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+      <div class="ov-val" style="color:var(--gold-soft)">$5,000</div>
+      <div class="ov-label">Guaranteed monthly draw</div>
+      <div class="ov-sub">Activates when you graduate Boss Academy. Hit your points every week and it's yours, no exceptions.</div>
+    </div>
+    <div class="ov">
+      <div class="ov-icon green"><i class="ti ti-chart-line" aria-hidden="true"></i></div>
+      <div class="ov-val" style="color:var(--green)">$10,710</div>
+      <div class="ov-label">Month 11 take-home</div>
+      <div class="ov-sub">Commission alone, draw fully cleared. Blended rate has climbed to 53.5% by this point.</div>
+    </div>
+    <div class="ov">
+      <div class="ov-icon purple"><i class="ti ti-percentage" aria-hidden="true"></i></div>
+      <div class="ov-val" style="color:var(--purple)">40% → 56%</div>
+      <div class="ov-label">Blended commission rate</div>
+      <div class="ov-sub">Starts at 40% month one. Grows to 56% as your ancillary attach rate improves — product mix, not a split change.</div>
+    </div>
+  </div>
+
+  <!-- BOSS PREP SETTER EARNINGS -->
+  <div class="sec-label">Boss Prep — earn while you learn (before draw activates)</div>
+  <div class="setter-grid">
+    <div class="setter-card">
+      <div class="s-type">Health bundle set</div>
+      <div class="s-val">$60</div>
+      <div class="s-note">Per set, paid next period when active-time target is met</div>
+    </div>
+    <div class="setter-card">
+      <div class="s-type">Life set</div>
+      <div class="s-val">$40</div>
+      <div class="s-note">Per set — same payout terms</div>
+    </div>
+    <div class="setter-card">
+      <div class="s-type">Dental bundle set</div>
+      <div class="s-val">$30</div>
+      <div class="s-note">Per set — same payout terms</div>
+    </div>
+    <div class="setter-card" style="background:var(--gold-dim);border-color:rgba(201,162,39,.3);">
+      <div class="s-type" style="color:var(--gold-soft)">Milestone bonus</div>
+      <div class="s-val">$250</div>
+      <div class="s-note">Every 10 of your sets that convert to a closed deal</div>
+    </div>
+    <div class="setter-card">
+      <div class="s-type">License trade-in</div>
+      <div class="s-val">Up to $100</div>
+      <div class="s-note">Apply set fees toward state licenses instead of cash (up to $100/state)</div>
+    </div>
+    <div class="setter-card" style="background:var(--surface2);">
+      <div class="s-type" style="color:var(--amber)">Academy qualifier</div>
+      <div class="s-val" style="color:var(--amber)">12 hrs + 10 states</div>
+      <div class="s-note">12 active dialer hours in setter class AND 10 state licenses — both required to enter Boss Academy</div>
+    </div>
+  </div>
+
+  <!-- HOW YOU GET PAID: LIL BOSS vs BIG BOSS -->
+  <div class="sec-label">How pay works — Lil Boss vs Big Boss</div>
+  <div class="phase-grid">
+    <div class="phase">
+      <div class="phase-hdr">
+        <div class="phase-dot" style="background:var(--blue)"></div>
+        <div>
+          <div class="phase-title">Lil Boss — the draw phase</div>
+          <div class="phase-subtitle">Draw activates after Boss Academy graduation</div>
+        </div>
+      </div>
+      <div class="phase-row"><span class="label">Draw floor (hit 1,100 pts/wk)</span><span class="val blue">$4k – $6k/mo</span></div>
+      <div class="phase-row"><span class="label">Your agent split</span><span class="val">20% of gross comm</span></div>
+      <div class="phase-row"><span class="label">Commission vs draw</span><span class="val">Floor guaranteed; overage pays down balance</span></div>
+      <div class="phase-row"><span class="label">Balance interest</span><span class="val">4% / yr on what's owed</span></div>
+      <div class="phase-row"><span class="label">AP targets</span><span class="val">$35k → $100k by tenure</span></div>
+      <div class="phase-row"><span class="label">Status ladder</span><span class="val green">Green / Yellow / Orange / Red</span></div>
+      <div class="phase-row"><span class="label">Graduate when</span><span class="val gold">Draw cleared + $6k+/mo comm</span></div>
+    </div>
+    <div class="phase">
+      <div class="phase-hdr">
+        <div class="phase-dot" style="background:var(--purple)"></div>
+        <div>
+          <div class="phase-title">Big Boss — commission phase</div>
+          <div class="phase-subtitle">No floor needed — you earn more without it</div>
+        </div>
+      </div>
+      <div class="phase-row"><span class="label">Monthly draw floor</span><span class="val" style="color:var(--txt3)">Gone — you don't need it</span></div>
+      <div class="phase-row"><span class="label">Your agent split</span><span class="val">20% of gross comm</span></div>
+      <div class="phase-row"><span class="label">Points unlock</span><span class="val purple">Multiplier on every bonus</span></div>
+      <div class="phase-row"><span class="label">Multiplier tiers</span><span class="val purple">+25% / +50% / +75%</span></div>
+      <div class="phase-row"><span class="label">Both gates required</span><span class="val">$100k AP + points — both, or multiplier off</span></div>
+      <div class="phase-row"><span class="label">Status ladder</span><span class="val" style="color:var(--txt3)">Gone — no floor to protect</span></div>
+      <div class="phase-row"><span class="label">Month 11 take-home</span><span class="val green">$10,710+ commission</span></div>
+    </div>
+  </div>
+
+  <!-- FULL COMP GRID -->
+  <div class="sec-label">Month-by-month comp — $5k draw (recommended)</div>
+  <div class="grid-wrap">
+    <table class="comp">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>AP required</th>
+          <th>Anc attach</th>
+          <th>Blended rate</th>
+          <th>Gross comm</th>
+          <th>Agent 20%</th>
+          <th>Draw floor</th>
+          <th>Agent pay</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-hdr"><td colspan="9">Months 1–3 · Ramp phase · $35k AP target</td></tr>
+        <tr><td class="mo">M1</td><td>$35,000</td><td>20%</td><td>40.0%</td><td>$14,000</td><td>$2,800</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$2,200</td></tr>
+        <tr><td class="mo">M2</td><td>$35,000</td><td>20%</td><td>40.0%</td><td>$14,000</td><td>$2,800</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$4,400</td></tr>
+        <tr><td class="mo">M3</td><td>$35,000</td><td>20%</td><td>40.0%</td><td>$14,000</td><td>$2,800</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$6,600</td></tr>
+        <tr class="section-hdr"><td colspan="9">Months 4–6 · Building · $50k AP target</td></tr>
+        <tr><td class="mo">M4</td><td>$50,000</td><td>25%</td><td>43.0%</td><td>$21,500</td><td>$4,300</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$7,300</td></tr>
+        <tr><td class="mo">M5</td><td>$50,000</td><td>25%</td><td>43.0%</td><td>$21,500</td><td>$4,300</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$8,000</td></tr>
+        <tr><td class="mo">M6</td><td>$50,000</td><td>25%</td><td>43.0%</td><td>$21,500</td><td>$4,300</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$8,700</td></tr>
+        <tr class="section-hdr"><td colspan="9">Months 7–9 · Acceleration · $75k AP target</td></tr>
+        <tr><td class="mo">M7</td><td>$75,000</td><td>25%</td><td>47.9%</td><td>$35,925</td><td>$7,185</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$6,515</td></tr>
+        <tr><td class="mo">M8</td><td>$75,000</td><td>30%</td><td>47.9%</td><td>$35,925</td><td>$7,185</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$4,330</td></tr>
+        <tr><td class="mo">M9</td><td>$75,000</td><td>30%</td><td>47.9%</td><td>$35,925</td><td>$7,185</td><td>$5,000</td><td class="agent-pay">$5,000</td><td>$2,145</td></tr>
+        <tr class="section-hdr"><td colspan="9">Months 10–12 · Elite · $100k AP target</td></tr>
+        <tr><td class="mo">M10</td><td>$100,000</td><td>35%</td><td>53.5%</td><td>$53,550</td><td>$10,710</td><td>$5,000</td><td class="agent-pay">$8,565</td><td class="bal-clear">CLEARED</td></tr>
+        <tr><td class="mo">M11</td><td>$100,000</td><td>35%</td><td>53.5%</td><td>$53,550</td><td>$10,710</td><td>$5,000</td><td class="agent-pay">$10,710</td><td class="muted">$0</td></tr>
+        <tr><td class="mo">M12</td><td>$100,000</td><td>35%</td><td>53.5%</td><td>$53,550</td><td>$10,710</td><td>$5,000</td><td class="agent-pay">$10,710</td><td class="muted">$0</td></tr>
+        <tr class="section-hdr"><td colspan="9">Month 13+ · Big Boss · sustained elite, multiplier active</td></tr>
+        <tr><td class="mo">M13+</td><td>$100,000</td><td>35%+</td><td>56.2%</td><td>$56,200</td><td>$11,240</td><td class="muted">—</td><td class="agent-pay">$11,240+</td><td class="muted">Big Boss</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- POINTS LADDER -->
+  <div class="sec-label">The points ladder — what you hit weekly</div>
+  <div class="pts-wrap">
+    <div class="pts-grid" style="margin-bottom:10px;">
+      <div class="pt gray-t">
+        <div class="pt-pts" style="color:var(--gray)">&lt;800</div>
+        <div class="pt-name" style="color:var(--gray)">Slipping</div>
+        <div class="pt-result" style="color:var(--red)">Level drops</div>
+        <div class="pt-sub" style="color:var(--txt3)">Miss this and you level down — climb back with one strong week</div>
+      </div>
+      <div class="pt green-t">
+        <div class="pt-pts" style="color:var(--green)">800</div>
+        <div class="pt-name" style="color:var(--green)">Green</div>
+        <div class="pt-result" style="color:var(--green)">Status held</div>
+        <div class="pt-sub" style="color:var(--txt3)">Keeps you green — this is status only, not a check</div>
+      </div>
+      <div class="pt blue-t">
+        <div class="pt-pts" style="color:var(--blue)">1,100</div>
+        <div class="pt-name" style="color:var(--blue)">Draw earned</div>
+        <div class="pt-result" style="color:var(--blue)">$4,000/mo</div>
+        <div class="pt-sub" style="color:var(--txt3)">This is the line. Below 1,100 you're green but unpaid</div>
+      </div>
+      <div class="pt amber-t">
+        <div class="pt-pts" style="color:var(--amber)">1,500</div>
+        <div class="pt-name" style="color:var(--amber)">$5k floor</div>
+        <div class="pt-result" style="color:var(--amber)">$5,000/mo</div>
+        <div class="pt-sub" style="color:var(--txt3)">Higher output = higher guaranteed floor</div>
+      </div>
+    </div>
+    <div class="pts-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="pt purple-t" style="grid-column:1/2;">
+        <div class="pt-pts" style="color:var(--purple)">2,000</div>
+        <div class="pt-name" style="color:var(--purple)">Top tier</div>
+        <div class="pt-result" style="color:var(--purple)">$6,000/mo</div>
+        <div class="pt-sub" style="color:var(--txt3)">Max draw floor — the prize as a Lil Boss</div>
+      </div>
+      <div class="pt" style="background:var(--surface2);border-color:var(--line);grid-column:2/3;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:12px;color:var(--txt3);line-height:1.6;">
+          Points book <b style="color:var(--txt)">weekly</b>, pay on the <b style="color:var(--txt)">two-week cumulative</b>. A big week carries a slow one. One strong week can always climb you back.<br><br>
+          Both tracks required: <b style="color:var(--txt)">weekly points</b> AND <b style="color:var(--txt)">monthly AP by tenure.</b> Miss either and you level down.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW THE RATE GROWS -->
+  <div class="sec-label">How your blended rate grows (product mix, not a split change)</div>
+  <div class="rate-grid">
+    <div class="rate-card">
+      <div class="rate-mo">Mo 1–3</div>
+      <div class="rate-pct" style="color:var(--txt2)">40.0%</div>
+      <div class="rate-anc">20% anc attach</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-mo">Mo 4–6</div>
+      <div class="rate-pct" style="color:var(--blue)">43.0%</div>
+      <div class="rate-anc">25% anc attach</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-mo">Mo 7–9</div>
+      <div class="rate-pct" style="color:var(--amber)">47.9%</div>
+      <div class="rate-anc">30% anc attach</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-mo">Mo 10–12</div>
+      <div class="rate-pct" style="color:var(--green)">53.5%</div>
+      <div class="rate-anc">35% anc attach</div>
+    </div>
+    <div class="rate-card highlight">
+      <div class="rate-mo">Mo 13+</div>
+      <div class="rate-pct">56.2%</div>
+      <div class="rate-anc">Elite, sustained</div>
+    </div>
+  </div>
+
+  <!-- BIG BOSS MULTIPLIER -->
+  <div class="sec-label">Big Boss — bonus multiplier (after graduation)</div>
+  <div class="bb-grid">
+    <div class="bb-card">
+      <div class="bb-pts">800 pts</div>
+      <div class="bb-mult">Commission</div>
+      <div class="bb-note">Locked in and flowing — no multiplier yet. Hold $100k AP and keep climbing.</div>
+    </div>
+    <div class="bb-card on">
+      <div class="bb-pts">1,100 pts</div>
+      <div class="bb-mult">+25%</div>
+      <div class="bb-note">Every bonus you earn pays 25% more. Both gates: 1,100 pts AND $100k AP.</div>
+    </div>
+    <div class="bb-card on" style="background:rgba(155,128,245,.15);border-color:rgba(155,128,245,.5);">
+      <div class="bb-pts">1,500 pts</div>
+      <div class="bb-mult">+50%</div>
+      <div class="bb-note">Every bonus pays 50% more. Stack it — same dual gate applies.</div>
+    </div>
+    <div class="bb-card on" style="background:rgba(155,128,245,.22);border-color:rgba(155,128,245,.7);">
+      <div class="bb-pts">2,000 pts</div>
+      <div class="bb-mult">+75%</div>
+      <div class="bb-note">Max Big Boss. Every bonus you earn multiplies by 75%. No ceiling.</div>
+    </div>
+    <div class="bb-card" style="grid-column:span 2;display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-alert-circle" style="font-size:20px;color:var(--amber);flex-shrink:0;" aria-hidden="true"></i>
+      <div style="font-size:12px;color:var(--txt3);line-height:1.6;">
+        <b style="color:var(--txt)">Dual-gate rule:</b> the multiplier only pays if <b style="color:var(--amber)">both</b> are green — maintain $100k AP <b style="color:var(--amber)">AND</b> hit your points. Miss the $100k and it's off even with high points. Miss the points, same thing. Hold both and every bonus multiplies.
+      </div>
+    </div>
+  </div>
+
+  <!-- VS TABLE -->
+  <div class="sec-label">TBB vs the competition</div>
+  <table class="vs-table">
+    <thead>
+      <tr>
+        <th>Offer element</th>
+        <th class="tbb-col">TBB</th>
+        <th>USHA / HealthMarkets</th>
+        <th>W2 advantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Guaranteed monthly floor</td>
+        <td class="win">$5,000/mo from day 1*</td>
+        <td class="lose">~$2,800/mo W2</td>
+        <td class="win">+$2,200/mo (+79%)</td>
+      </tr>
+      <tr>
+        <td>Draw type</td>
+        <td class="win">Indefinite, tied to points</td>
+        <td class="lose">Temporary, claws back on exit</td>
+        <td class="win">No surprise clawbacks</td>
+      </tr>
+      <tr>
+        <td>Commission split</td>
+        <td class="win">20% of growing blended rate</td>
+        <td class="lose">Fixed low split</td>
+        <td class="win">Grows as ancillary climbs</td>
+      </tr>
+      <tr>
+        <td>Blended comm rate</td>
+        <td class="win">40% M1 → 56% M13+</td>
+        <td class="lose">Fixed ~25–30%</td>
+        <td class="win">Earn significantly more per AP $</td>
+      </tr>
+      <tr>
+        <td>Month 12 take-home</td>
+        <td class="win">$10,710/mo + bonuses</td>
+        <td class="lose">~$4,200/mo</td>
+        <td class="win">2.5× more at full ramp</td>
+      </tr>
+      <tr>
+        <td>Transparency</td>
+        <td class="win">Points system, visible in real time</td>
+        <td class="lose">Opaque — surprise terminations</td>
+        <td class="win">Know exactly where you stand</td>
+      </tr>
+      <tr>
+        <td>Exit terms</td>
+        <td class="win">Standard 1099, 4%/yr on balance</td>
+        <td class="lose">At-will W2, no notice</td>
+        <td class="win">Transparent, balance shrinks as you pay</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- CALLOUT -->
+  <div class="callout">
+    <i class="ti ti-rocket" aria-hidden="true"></i>
+    <div class="callout-text">
+      <b>The short version:</b> Hit your points each week and you're guaranteed <b>$5,000/mo</b> while you ramp — no mystery, no surprise clawbacks, no W2 ceiling. Blended commission starts at <b>40%</b> and climbs to <b>56%</b> by month 13 as your ancillary attach rate improves. By month 11 you're earning <b>$10,710/mo</b> in commission plus unlock ladder bonuses on top. <b>No captive agency touches that.</b>
+      <div style="margin-top:8px;font-size:12px;color:var(--txt3);">* Draw activates after you pass Boss Academy. Before that, you earn setter fees — $30–$60 per set and a $250 bonus for every 10 sets that close.</div>
+    </div>
+  </div>
+
+  <div class="foot">The Benefits Boss — Internal use only. Figures are projections based on hitting weekly points and monthly AP targets. Share after second interview in Trainual.</div>
+
+</div>
+</body>
+</html>
